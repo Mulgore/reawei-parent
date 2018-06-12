@@ -25,3 +25,16 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+
+target
+logs/*
+tools/**/*
+dist
+
+classes/
+src/main/resources/rebel.xml
+git.sh
+rebel.xml
+/**/*.log
+/**/*.log.*
