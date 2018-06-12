@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/reawei-api/reawei-api.iml" filepath="$PROJECT_DIR$/reawei-api/reawei-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reawei-model/reawei-model.iml" filepath="$PROJECT_DIR$/reawei-model/reawei-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reawei-parent.iml" filepath="$PROJECT_DIR$/reawei-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reawei-server/reawei-server.iml" filepath="$PROJECT_DIR$/reawei-server/reawei-server.iml" />
+    </modules>
+  </component>
+</project>
