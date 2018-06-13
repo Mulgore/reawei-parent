@@ -5,6 +5,8 @@ import com.alibaba.dubbo.config.MonitorConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -18,12 +20,23 @@ import org.springframework.core.env.Environment;
  * @author qigong
  */
 @Configuration
-@PropertySource("classpath:properties/dubbo.properties")
 @ImportResource("classpath:spring/dubbo-*.xml")
 public class DubboConfiguration {
 
-    @Autowired
-    private Environment env;
+    @Value("${dubbo.application.name}")
+    private String applicationName;
+
+    @Value("${dubbo.registry.protocol}")
+    private String registryProtocol;
+
+    @Value("${dubbo.registry.address}")
+    private String registryAddress;
+
+    @Value("${dubbo.protocol.port}")
+    private Integer protocolPort;
+
+    @Value("${dubbo.protocol.name}")
+    private String protocolName;
 
     /**
      * 提供方应用信息，用于计算依赖关系
@@ -33,7 +46,7 @@ public class DubboConfiguration {
     @Bean
     public ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName(env.getProperty("application.name").trim());
+        applicationConfig.setName(applicationName);
         return applicationConfig;
     }
 
@@ -45,8 +58,8 @@ public class DubboConfiguration {
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setProtocol(env.getProperty("registry.protocol").trim());
-        registryConfig.setAddress(env.getProperty("registry.address").trim());
+        registryConfig.setProtocol(registryProtocol);
+        registryConfig.setAddress(registryAddress);
         return registryConfig;
     }
 
@@ -58,8 +71,8 @@ public class DubboConfiguration {
     @Bean
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setPort(Integer.parseInt(env.getProperty("protocol.port").trim()));
-        protocolConfig.setName(env.getProperty("protocol.name").trim());
+        protocolConfig.setPort(protocolPort);
+        protocolConfig.setName(protocolName);
         protocolConfig.setThreads(200);
         return protocolConfig;
     }

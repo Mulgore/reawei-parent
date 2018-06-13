@@ -21,7 +21,6 @@ import javax.sql.DataSource;
  * @date 2017/6/8
  */
 @Configuration
-@PropertySource("classpath:properties/jdbc.properties")
 public class DbConfiguration {
     private static Logger log = LoggerFactory.getLogger(DbConfiguration.class);
 
