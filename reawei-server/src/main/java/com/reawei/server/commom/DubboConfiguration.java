@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.MonitorConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
+import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -20,7 +21,7 @@ import org.springframework.core.env.Environment;
  * @author qigong
  */
 @Configuration
-@ImportResource("classpath:spring/dubbo-*.xml")
+//@DubboComponentScan(basePackages = "com.reawei.server.service.impl")
 public class DubboConfiguration {
 
     @Value("${dubbo.application.name}")

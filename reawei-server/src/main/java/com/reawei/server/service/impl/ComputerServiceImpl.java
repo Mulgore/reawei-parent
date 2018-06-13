@@ -1,9 +1,10 @@
 package com.reawei.server.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.reawei.api.ComputerService;
 import com.reawei.model.Person;
 import com.reawei.server.mapper.ComputerMapper;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -12,7 +13,8 @@ import javax.annotation.Resource;
  *
  * @author qigong
  */
-@Service("computerService")
+@Component("computerService")
+@Service(timeout = 20000)
 public class ComputerServiceImpl implements ComputerService {
 
     @Resource
