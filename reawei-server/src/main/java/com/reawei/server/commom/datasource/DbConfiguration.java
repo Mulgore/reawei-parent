@@ -1,5 +1,6 @@
 package com.reawei.server.commom.datasource;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +25,6 @@ import javax.sql.DataSource;
 public class DbConfiguration {
     private static Logger log = LoggerFactory.getLogger(DbConfiguration.class);
 
-    @Value("${mysql.datasource.type}")
-    private Class<? extends DataSource> mysqlDataSourceType;
-
     /**
      * master DataSource
      *
@@ -37,10 +35,10 @@ public class DbConfiguration {
      */
     @Bean("masterDataSource")
     @Primary
-    @ConfigurationProperties(prefix = "master.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.master")
     public DataSource masterDataSource() {
         log.info("-------------------- master DataSource init ---------------------");
-        return DataSourceBuilder.create().type(mysqlDataSourceType).build();
+        return DruidDataSourceBuilder.create().build();
     }
 
     /**
@@ -49,9 +47,9 @@ public class DbConfiguration {
      * @return DataSource
      */
     @Bean("clusterDataSource")
-    @ConfigurationProperties(prefix = "cluster.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.cluster")
     public DataSource clusterDataSource() {
         log.info("-------------------- cluster DataSource init ---------------------");
-        return DataSourceBuilder.create().type(mysqlDataSourceType).build();
+        return DruidDataSourceBuilder.create().build();
     }
 }

@@ -21,7 +21,6 @@ import org.springframework.core.env.Environment;
  * @author qigong
  */
 @Configuration
-//@DubboComponentScan(basePackages = "com.reawei.server.service.impl")
 public class DubboConfiguration {
 
     @Value("${dubbo.application.name}")
